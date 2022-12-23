@@ -36,7 +36,6 @@ public class ControlActivity extends AppCompatActivity {
     private boolean stopThread = false;
     private WebView webView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,12 +49,8 @@ public class ControlActivity extends AppCompatActivity {
         buttonDisconnect = findViewById(R.id.stopBtn);
         connectionStatus = findViewById(R.id.connection_status);
 
-
-
-
         // Connect to the server
         new ConnectTask().execute(SERVER_ADDRESS, Integer.toString(SERVER_PORT));
-
 
         buttonForward.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,9 +106,6 @@ public class ControlActivity extends AppCompatActivity {
             }
         });
 
-
-
-
         // Webview for image streaming from an IP camera.
         webView = findViewById(R.id.web_view);
         webView.setWebViewClient(new WebViewClient());
@@ -121,11 +113,7 @@ public class ControlActivity extends AppCompatActivity {
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.loadUrl("http://" + SERVER_ADDRESS + ":8000/stream.mjpg");
 
-
-
-
     }
-
 
 // Class for sending messages from a seperate thread.
     private class SendMessageTask extends AsyncTask<String, Void, Void> {
@@ -227,6 +215,4 @@ public class ControlActivity extends AppCompatActivity {
             buttonDisconnect.setEnabled(false);
         }
     }
-
-
 }
